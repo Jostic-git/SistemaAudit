@@ -1,0 +1,4 @@
+/audit_frontend/node_modules/
+/audit_backend/__pycache__/
+/__pycache__/
+/.idea/
