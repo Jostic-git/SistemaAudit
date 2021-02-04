@@ -1,4 +1,6 @@
 /audit_frontend/node_modules/
 /audit_backend/__pycache__/
 /__pycache__/
-/.idea/
+/.idea/t>git push SistemaAudit
+
+/db.sqlite3

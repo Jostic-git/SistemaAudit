@@ -1,13 +1,13 @@
 from django.db import models
 
 
-# Справочная информация системы
+# Reference book
 
-# активы АФК (организации)
+# AFK Companies
 class Company(models.Model):
-    short_name = models.CharField(max_length=150, verbose_name='Короткое название')
-    full_name = models.CharField(max_length=150, verbose_name='Полное название')
-    inn = models.IntegerField(verbose_name='ИНН компании')
+    short_name = models.CharField(max_length=150, verbose_name='Shot name')
+    full_name = models.CharField(max_length=150, verbose_name='Full name')
+    inn = models.IntegerField(verbose_name='INN')
 
     class Meta:
         ordering = ['short_name']
@@ -16,9 +16,11 @@ class Company(models.Model):
         return self.short_name
 
 
-# данные по активу
+# Company data
 class ActiveData(models.Model):
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='companies', verbose_name='Организация')
+    company = models.ForeignKey(Company, on_delete=models.CASCADE,
+                                related_name='active_data_companies',
+                                verbose_name='Организация')
     period = models.IntegerField(verbose_name='Период показателей')
     actives = models.FloatField(verbose_name='Активы организации')
     earn = models.FloatField(verbose_name='Выручка')
@@ -34,18 +36,19 @@ class ActiveData(models.Model):
         ordering = ['period']
 
 
-# риски
+# Risks
 class Risk(models.Model):
     title = models.CharField(max_length=200, verbose_name='Наименование риска')
 
 
-# Процессы 1 уровня
+# Process 1 level
 class Process(models.Model):
     title = models.CharField(max_length=200, verbose_name='Наименование процесса')
 
 
-# Подпроцессы
-class SubProcess(models):
-    process = models.ForeignKey(Process, related_name='processes', verbose_name='Процесс верхнего уровня')
+# Subprocess
+class SubProcess(models.Model):
+    process = models.ForeignKey(Process, on_delete=models.CASCADE,
+                                related_name='processes',
+                                verbose_name='Процесс верхнего уровня')
     title = models.CharField(max_length=200, verbose_name='Наименование подпроцесса')
-
