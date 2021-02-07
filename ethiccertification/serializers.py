@@ -40,7 +40,7 @@ class EthicItemSerializer(serializers.ModelSerializer):
                   'answer_1_comment', 'answer_2', 'ethic_item_answers_2', 'answer_3', 'ethic_item_answers_3',
                   'answer_4', 'ethic_item_answers_4', 'answer_5', 'ethic_item_answers_5', 'answer_6',
                   'answer_6_comment', 'answer_7', 'answer_7_comment', 'answer_8', 'answer_8_comment', 'answer_9',
-                  'answer_9_comment', 'answer_10', 'answer_10_comment'
+                  'answer_9_comment', 'answer_10', 'answer_10_comment', 'questionnaire_file'
                   ]
 
     def create(self, validated_data):

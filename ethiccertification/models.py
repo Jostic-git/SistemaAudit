@@ -31,6 +31,7 @@ class EthicItem(models.Model):
     answer_9_comment = models.TextField(null=True, blank=True, verbose_name='question 9 comment')
     answer_10 = models.BooleanField(verbose_name='question_10')
     answer_10_comment = models.TextField(null=True, blank=True, verbose_name='question 10 comment')
+    questionnaire_file = models.FileField(upload_to='project_files', null=True, max_length=255)
 
     def __str__(self):
         return f'Анкета №{self.id} {self.employee} от {self.created} ({self.company.short_name})'
